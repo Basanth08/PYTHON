@@ -1,0 +1,77 @@
+import arrays
+import array_utils
+import random
+
+def create_big_wheel():
+   return array_utils.range_array(5,105,5)
+
+def print_big_wheel_values(big_wheel_array):
+    print("Big Wheel Options:")
+    for i in range(len(big_wheel_array)):
+        print(big_wheel_array[i], end = "")
+        if i <= len(big_wheel_array)-2:
+            print(",", end = "")
+
+def spin_wheel(big_wheel_array):
+    return big_wheel_array[random.randint(0,len(big_wheel_array)-1)]
+
+def run_round(big_wheel_array, spin_threshold):
+    count = 0
+    value = spin_wheel(big_wheel_array)
+    while value < 100 and value < spin_threshold and count < 2:
+        value = value + spin_wheel(big_wheel_array)
+        count += 1
+    return value
+    # if value < threshold: spin again
+    # if value + new_value < threshold: spin again
+    # if value > threshold: don't spin again
+    # if sum_values > 100: stop
+
+def read_results_recursion(results_array, i = 0):
+    if i == len(results_array):
+        return
+    else:
+        print(results_array[i])
+        i += 1
+        read_results_recursion(results_array, i)
+
+def results_sum_recursion(results_array, i = 0):
+    if i == len(results_array):
+        return 0
+    else:
+        return results_array[i] + results_sum_recursion(results_array, i+1)
+
+def rounds_check_recursion(results_array, i=0, count=0):
+    if i == len(results_array):
+        return count
+    else:
+        if results_array[i] <= 100:
+            count+=1
+        i+=1
+        return rounds_check_recursion(results_array, i, count)
+        
+def main():
+    try:
+        print("")
+        threshold = int(input("Enter the threshold to trigger a second spin. "))
+        rounds = int(input("Enter the number of rounds to run the simulation (1-100). "))
+        results_array = arrays.Array(rounds)
+        print("")
+        big_wheel_array = create_big_wheel()
+        print_big_wheel_values(big_wheel_array)
+        print("")
+        print("")
+        for i in range(len(results_array)):
+            results_array[i] = run_round(big_wheel_array, threshold)
+        print("Results from", rounds, "rounds:")
+        read_results_recursion(results_array)
+        print("")
+        sum = results_sum_recursion(results_array)
+        print("Sum:", sum)
+        print("Rounds less than or equal to $100:", rounds_check_recursion(results_array))
+        print("Average:", round(sum / len(results_array)))
+    except ValueError:
+        print("Please enter a valid number between 1 and 100.")
+
+if __name__ == "__main__":
+    main()

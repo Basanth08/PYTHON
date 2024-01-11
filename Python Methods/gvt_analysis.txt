@@ -1,0 +1,31 @@
+In a game of Goats vs. Trolls, each player chooses to
+represent one of two possible factions: the heroic Goats,
+or the villainous Trolls. The players draw cards from a
+shuffled deck of 40 cards and place them into a hand. The
+players take turns and use the cards in their hands to
+attack the other player's cards until one player's score is
+reduced to 0.
+Each card in a game of GvT has several attributes
+including:
+● Name
+● Resource cost
+● Faction (Goats or Trolls)
+● Rarity (legendary, rare, uncommon, or common)
+● Attack power
+● Health
+
+-- Noun
+Player, deck, cards, hand, Name, Resource Cost, Faction, Rarity, Attack Power, Health
+
+Class-Card: 
+Name
+Resource Cost
+Faction
+rarity
+Attack Power
+Health
+
+
+--Verb
+Choose, represent , draw, shuffle, place, take turns, use cards, attack
+
