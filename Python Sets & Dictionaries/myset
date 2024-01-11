@@ -1,0 +1,40 @@
+def make_myset(length,hash_func=hash):
+  table = [[] for _ in range(length)]
+  return (hash_func, table)
+
+def add(myset, element):
+    hash_func, table = myset
+    index = hash_func(element) % len(table)
+    if element not in table[index]: 
+        table[index].append(element)
+
+def contains(myset, element):
+  hash_func, table = myset 
+  index = hash_func(element) % len(table)
+  return element in table[index]
+
+
+
+def main():
+    myset = make_myset(10)
+    print(myset)
+    myset = make_myset(7)
+  
+    add(myset, "Apple")
+    add(myset, "Banana") 
+    add(myset, "Apple") # Ignore duplicates
+  
+    print(myset[1]) # Print hash table
+    myset = make_myset(10)
+  
+    add(myset, "Apple")
+    add(myset, "Banana")
+
+    print(contains(myset, "Apple")) # True
+    print(contains(myset, "Orange")) # False
+
+if __name__ == "__main__":
+   main()
+
+
+
