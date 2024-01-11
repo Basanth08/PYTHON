@@ -1,0 +1,21 @@
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+fghijklmnopqrstuvwxyzabcde
+
+BIG
+gnl
+
+
+>>> chr(64)
+'@'
+>>> chr(65)
+'A'
+>>> chr(104)
+'h'
+>>> ord("H")
+72
+>>> chr(89)
+'Y'
+
+in the caesar ,using ord function will help us give the character number in the ascii table and chr function will help us give the character when we enter the character number
+
+
